@@ -1,0 +1,22 @@
+
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide *ngFor="let item of slides">
+      <div class="container">
+        <div class="container__picture">
+<!--          <div class="logo">-->
+<!--            <svg-icon src="{{item.icon}}"></svg-icon>-->
+<!--          </div>-->
+          <img class="image" src="{{item.image}}">
+        </div>
+        <div class="container__text">
+          <div class="title">{{item.title}}</div>
+          <div class="description">
+            {{item.description}}
+          </div>
+        </div>
+        <div class="container__buttons">
+          <div class="start" (click)="start()">Начать пользоваться</div>
+        </div>
+      </div>
+    </ion-slide>
+  </ion-slides>

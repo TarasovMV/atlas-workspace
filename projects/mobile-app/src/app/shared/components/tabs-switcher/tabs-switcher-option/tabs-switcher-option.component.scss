@@ -1,0 +1,25 @@
+@import "src/theme/functions/resizer";
+
+.wrapper {
+  display: flex;
+  background: #1C1F2B;
+  width: sizeWidth(180);
+  height: sizeHeight(80);
+  padding: 0 sizeWidth(14);
+  align-items: center;
+  justify-content: center;
+  font-size: sizeHeight(16);
+  color: #606580;
+  border: solid sizeHeight(1) transparent;
+  transition: .2s;
+  box-sizing: border-box;
+
+  &__selected {
+    background: rgba(#1C76FE, 20%);
+    color: white;
+    font-weight: bold;
+    border-color: #1C76FE;
+    border-radius: sizeHeight(2);
+    transition: .3s;
+  }
+}

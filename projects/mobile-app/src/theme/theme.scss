@@ -1,0 +1,58 @@
+@import "src/theme/functions/resizer";
+
+@font-face {
+  font-family: "Magistral";
+  src: url("fonts/magistral/6f415d87a4b5031d623f64b0e4c0235b.eot");
+  src: url("fonts/magistral/6f415d87a4b5031d623f64b0e4c0235b.woff2") format("woff2"),
+    url("fonts/magistral/6f415d87a4b5031d623f64b0e4c0235b.woff") format("woff"),
+    url("fonts/magistral/6f415d87a4b5031d623f64b0e4c0235b.ttf") format("truetype")
+}
+
+@font-face {
+  font-family: "SegoeUI";
+  src: url("fonts/segoe/SegoeUI.eot");
+  src: url("fonts/segoe/SegoeUI.woff2") format("woff2"),
+  url("fonts/segoe/SegoeUI.woff") format("woff"),
+  url("fonts/segoe/SegoeUI.ttf") format("truetype")
+}
+
+@font-face {
+  font-family: "SegoeUI_Bold";
+  src: url("fonts/segoe-bold/SegoeUI-Bold.eot");
+  src: url("fonts/segoe-bold/SegoeUI-Bold.woff") format("woff"),
+    url("fonts/segoe-bold/SegoeUI-Bold.ttf") format("truetype")
+}
+
+html {
+  font-family: sans-serif, "SegoeUI";
+  --ion-font-family: "SegoeUI";
+  --ion-default-font: "SegoeUI";
+}
+
+body {
+  font-family: "SegoeUI";
+  --ion-font-family: "SegoeUI";
+  --ion-default-font: "SegoeUI";
+}
+
+.tabs-title {
+  font-size: sizeHeight(24);
+  font-weight: 700;
+  color: white;
+
+  &_activity {
+    color: #1C76FE;
+  }
+
+  &_restrictions {
+    color: #F7931E;
+  }
+
+  &_potential {
+    color: #00A73D;
+  }
+
+  &_default {
+    color: #8C99B2;
+  }
+}

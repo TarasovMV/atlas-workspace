@@ -1,0 +1,20 @@
+<div class="wrapper">
+  <div class="header">
+    <app-tabs-switcher [formControl]="control">
+      <app-tabs-switcher-option [value]="1">Эксплуатационная готовность</app-tabs-switcher-option>
+      <app-tabs-switcher-option [value]="2">Производительность</app-tabs-switcher-option>
+      <app-tabs-switcher-option [value]="3">Энергоэффективность</app-tabs-switcher-option>
+    </app-tabs-switcher>
+  </div>
+  <div class="content">
+    <h1 class="tabs-title tabs-title_restrictions">Ограничения</h1>
+    <app-tabs-text-block type="restrictions">Неисправность технологического оборудования</app-tabs-text-block>
+    <app-tabs-text-block type="restrictions">Нет целевого показателя производительности</app-tabs-text-block>
+    <app-tabs-text-block type="restrictions">Отсутствует рабочая бригада для формирования дополнительной мощности</app-tabs-text-block>
+    <h1 class="tabs-title tabs-title_potential">Потенциал</h1>
+    <app-tabs-text-block type="potential">Неисправность технологического оборудования</app-tabs-text-block>
+    <app-tabs-text-block type="potential">Неисправность технологического оборудования</app-tabs-text-block>
+    <app-tabs-text-block type="potential">Неисправность технологического оборудования</app-tabs-text-block>
+    <app-tabs-text-block type="potential">Неисправность технологического оборудования</app-tabs-text-block>
+  </div>
+</div>

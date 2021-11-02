@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "mobile-app": {
+      "name": "mobile-app",
+      "integrations": {
+        "capacitor": {}
+      },
+      "type": "angular",
+      "root": "projects/mobile-app"
+    }
+  },
+  "integrations": {
+    "capacitor": {}
+  }
+}

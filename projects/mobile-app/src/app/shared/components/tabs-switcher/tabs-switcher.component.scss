@@ -1,0 +1,23 @@
+@import "src/theme/functions/resizer";
+
+.wrapper {
+  display: flex;
+  width: max-content;
+  //margin: inherit;
+
+  ::ng-deep {
+    & > * {
+      margin-right: sizeWidth(8);
+
+      &:first-child {
+        //margin-left: 0;
+        margin-left: var(--margin-side);
+      }
+
+      &:last-child {
+        //margin-right: 0;
+        margin-right: var(--margin-side);
+      }
+    }
+  }
+}

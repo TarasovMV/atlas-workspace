@@ -1,0 +1,37 @@
+@import "src/theme/functions/resizer";
+
+.wrapper {
+  display: flex;
+  flex-flow: column;
+  overflow: auto;
+  height: 100%;
+  width: 100%;
+
+  .header {
+    position: absolute;
+    overflow: auto;
+    height: sizeHeight(80);
+    width: 100%;
+
+    app-tabs-switcher {
+      --margin-side: #{sizeWidth(16)};
+    }
+  }
+
+  .content {
+    margin-top: sizeHeight(80);
+    display: flex;
+    flex-flow: column;
+    padding: 0 sizeWidth(16);
+    background: #12151E;
+    z-index: 2;
+
+    h1 {
+      margin: sizeHeight(22) 0 sizeHeight(22) sizeWidth(14);
+    }
+
+    app-tabs-text-block {
+      margin-bottom: sizeHeight(8);
+    }
+  }
+}

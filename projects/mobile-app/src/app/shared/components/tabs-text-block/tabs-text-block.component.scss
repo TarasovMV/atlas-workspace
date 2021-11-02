@@ -1,0 +1,42 @@
+@import "src/theme/functions/resizer";
+
+.wrapper {
+  width: 100%;
+  min-height: 1vh;
+  background: #1C1F2B;
+  padding: sizeWidth(12);
+  border-radius: sizeHeight(2);
+
+  .textarea {
+    border-left: solid sizeWidth(2);
+    color: #D7E2F2;
+    font-size: sizeHeight(16);
+    font-weight: 700;
+    padding: 0 sizeWidth(18);
+    line-height: sizeHeight(21);
+  }
+
+  &__default {
+    .textarea {
+      border-color: #8C99B2;
+    }
+  }
+
+  &__restrictions {
+    .textarea {
+      border-color: #F7931E;
+    }
+  }
+
+  &__potential {
+    .textarea {
+      border-color: #00A73D;
+    }
+  }
+
+  &__activity {
+    .textarea {
+      border-color: #1C76FE;
+    }
+  }
+}
