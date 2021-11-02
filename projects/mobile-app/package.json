@@ -13,5 +13,8 @@
     "@capacitor/status-bar": "1.0.5",
     "@capacitor/storage": "^1.2.2",
     "rxjs": "~6.6.0"
+  },
+  "devDependencies": {
+    "@angular/cli": "12.2.12"
   }
 }

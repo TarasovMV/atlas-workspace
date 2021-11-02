@@ -7,6 +7,11 @@
       },
       "type": "angular",
       "root": "projects/mobile-app"
+    },
+    "mobie-app": {
+      "integrations": {
+        "capacitor": {}
+      }
     }
   },
   "integrations": {
