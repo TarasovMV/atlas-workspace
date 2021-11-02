@@ -20,7 +20,7 @@ export class KeyboardService {
         }
         try {
             this.actionListeners(platform, appWindow);
-            await Keyboard.setStyle({style: KeyboardStyle.Light});
+            await Keyboard.setStyle({style: KeyboardStyle.Dark});
             await Keyboard.setResizeMode({mode: KeyboardResize.None});
         } catch {
         }
