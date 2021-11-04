@@ -1,0 +1,112 @@
+@import "src/theme/functions/resizer";
+
+svg {
+  position: absolute;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .diagram {
+    height: 80vw;
+    width: 80vw;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    &__values {
+      height: 100%;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+
+      position: absolute;
+
+      .prop {
+        display: flex;
+        flex-direction: column;
+
+        .description {
+          font-size: sizeHeight(12);
+          color: #606580;
+
+          text-align: center;
+        }
+
+        .value {
+          margin-top: sizeHeight(3);
+
+          font-size: sizeHeight(12);
+          font-weight: 700;
+
+          color: #D7E2F2;
+          text-align: center;
+        }
+
+        &-top {
+          margin-bottom: sizeHeight(10);
+        }
+
+        &-bottom {
+          margin-top: sizeHeight(10);
+        }
+      }
+
+      .line {
+        width: sizeWidth(1);
+        flex: 1;
+
+        background: rgba(96, 101, 128, 0.25);
+      }
+    }
+
+    ::ng-deep {
+      .diagram__circle {
+        position: absolute;
+        stroke: #606580;
+        fill: #12151E;
+      }
+
+      .diagram__blue {
+        stroke: #1C76FE;
+        stroke-width: sizeHeight(1);
+        fill: transparent;
+
+        transform: rotate(-90deg);
+        transform-origin: center center;
+      }
+
+      .diagram__path {
+        stroke-width: sizeHeight(1.5);
+        fill: transparent;
+
+        &_blue {
+          stroke: #1C76FE;
+        }
+
+        &_white {
+          stroke: #FFFFFF;
+        }
+
+        &_green {
+          stroke: #00A73D;
+        }
+      }
+
+      .dot {
+        stroke: #00A73D;
+        fill: #00A73D;
+      }
+    }
+  }
+}

@@ -5,6 +5,7 @@ import {IonicModule} from '@ionic/angular';
 import {TabsPotentialPage} from './tabs-potential.page';
 import {AngularSvgIconModule} from 'angular-svg-icon';
 import {RouterModule} from "@angular/router";
+import {SharedModule} from "../../../../shared/shared.module";
 
 @NgModule({
     imports: [
@@ -12,7 +13,8 @@ import {RouterModule} from "@angular/router";
         FormsModule,
         IonicModule,
         AngularSvgIconModule,
-        RouterModule.forChild([{path: '', component: TabsPotentialPage}])
+        RouterModule.forChild([{path: '', component: TabsPotentialPage}]),
+        SharedModule
     ],
     declarations: [
         TabsPotentialPage,
