@@ -28,8 +28,6 @@ export class AuthPage implements OnInit {
     }
 
     private async auth(code: string): Promise<void> {
-        this.navCtrl.navigateRoot('tabs');
-        return;
         this.codeInput?.nativeElement.blur();
         this.isSwingAnimation$.next(false);
         try {
@@ -39,5 +37,4 @@ export class AuthPage implements OnInit {
             this.codeControl.setValue('');
         }
     }
-
 }

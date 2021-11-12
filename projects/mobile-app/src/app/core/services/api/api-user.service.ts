@@ -19,7 +19,7 @@ export class ApiUserService {
             userName: code,
             password: code,
         }
-        return await this.http.post<IUser>(`${this.restUrl}/account/login`, body).toPromise();
+        return await this.http.post<IUser>(`${this.restUrl}/api/auth/login`, body).toPromise();
     }
 
     public async fcmTokenRegister(token: string): Promise<unknown> {

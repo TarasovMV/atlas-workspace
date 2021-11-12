@@ -43,8 +43,8 @@ export class MainDiagramComponent implements OnInit, AfterViewInit {
             .attr('class', 'diagram__circle')
 
         this.appendPath('diagram__path_white', this.diagramData.white, size);
-        this.appendPath('diagram__path_blue', this.diagramData.blue, size);
-        this.appendPath('diagram__path_green', this.diagramData.green, size, true);
+        this.appendPath('diagram__path_blue', this.diagramData.blue, size, true);
+        this.appendPath('diagram__path_green', this.diagramData.green, size);
     }
 
     private appendPath(className: string, data: number[], maxSize: number, marks: boolean = false) {
