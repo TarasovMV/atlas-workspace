@@ -1,5 +1,84 @@
+@import "src/theme/functions/resizer";
+
 .wrapper {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
-  background: #1C1F2B;
+  background: var(--bg-body-color);
+  padding-bottom: sizeHeight(40);
+
+  .stats {
+    display: flex;
+    width: 100%;
+    padding: 0 10vw;
+    align-items: center;
+    margin-top: sizeHeight(30);
+
+    img {
+      height: sizeHeight(88);
+      width: sizeHeight(90);
+    }
+
+    .right {
+      display: flex;
+      flex-direction: column;
+      margin-left: sizeWidth(30);
+
+      .value {
+        color: var(--index-blue1-color);
+        font-size: sizeHeight(36);
+        font-family: 'SegoeUI_Bold';
+      }
+
+      .title {
+        color: var(--text-subscript-color);
+        font-size: sizeHeight(14);
+      }
+    }
+  }
+
+  .legend {
+    display: flex;
+    padding: 0 10vw;
+    margin-top: sizeHeight(40);
+
+    .item {
+      position: relative;
+      margin-right: sizeWidth(30);
+      font-size: sizeHeight(14);
+      color: var(--text-contrast-color);
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &::before {
+        position: absolute;
+        top: sizeHeight(30);
+        content: '';
+        width: sizeWidth(16);
+        height: sizeWidth(2);
+        background: red;
+      }
+
+      &__default {
+        &::before {
+          background: var(--text-contrast-color);
+        }
+      }
+
+      &__potential {
+        &::before {
+          background: var(--index-blue1-color);
+        }
+      }
+
+      &__current {
+        &::before {
+          background: var(--index-green1-color);
+        }
+      }
+    }
+  }
 }

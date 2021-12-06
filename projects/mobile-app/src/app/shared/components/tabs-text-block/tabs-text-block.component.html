@@ -1,5 +1,13 @@
-<div class="wrapper" [ngClass]="'wrapper__' + type">
-  <div class="textarea">
-    <ng-content></ng-content>
+<div class="wrapper">
+  <div *ngFor="let info of data.info; let isLast = last"
+       class="textarea"
+       [class]="'textarea__' + info.type"
+       [class.textarea__last]="isLast"
+  >
+    {{info.text}}
+  </div>
+  <div class="footer">
+    <div class="date" *ngIf="!!data.date"><span>{{data.date}}</span></div>
+    <div class="counter">{{data.count}}</div>
   </div>
 </div>

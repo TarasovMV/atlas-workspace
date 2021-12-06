@@ -22,7 +22,7 @@ export class UserService {
     public async login(code: string): Promise<void> {
         const user = await this.apiUserService.authorize(code);
         await this.tokenService.saveToken(user.token);
-        await this.navCtrl.navigateRoot('tabs');
+        await this.navCtrl.navigateRoot('map');
     }
 
     public async logout(): Promise<void> {

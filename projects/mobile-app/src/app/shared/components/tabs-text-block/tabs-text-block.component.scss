@@ -3,40 +3,58 @@
 .wrapper {
   width: 100%;
   min-height: 1vh;
-  background: #1C1F2B;
+  background: var(--bg-body-color);
   padding: sizeWidth(12);
   border-radius: sizeHeight(2);
 
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: sizeHeight(9);
+    margin-left: sizeWidth(19);
+
+    .counter {
+      color: var(--index-blue1-color);
+      font-size: sizeHeight(18);
+      font-weight: 700;
+      text-align: end;
+      margin-left: auto;
+    }
+
+    .date {
+      display: flex;
+      padding: sizeHeight(5) sizeWidth(10);
+      font-size: sizeHeight(14);
+      border-radius: sizeHeight(2);
+      background: var(--index-blue1-color);
+      color: var(--text-alwaysWhite-color);
+    }
+  }
+
   .textarea {
     border-left: solid sizeWidth(2);
-    color: #D7E2F2;
+    color: var(--text-contrast-color);
     font-size: sizeHeight(16);
     font-weight: 700;
-    padding: 0 sizeWidth(18);
+    padding: sizeHeight(5) sizeWidth(18);
     line-height: sizeHeight(21);
-  }
+    margin-bottom: sizeHeight(15);
 
-  &__default {
-    .textarea {
-      border-color: #8C99B2;
+    &__last {
+      margin-bottom: 0;
     }
-  }
 
-  &__restrictions {
-    .textarea {
-      border-color: #F7931E;
+    &__default {
+      border-color: var(--text-main-color);
     }
-  }
 
-  &__potential {
-    .textarea {
-      border-color: #00A73D;
+    &__restriction {
+      border-color: var(--index-error-color);
     }
-  }
 
-  &__activity {
-    .textarea {
-      border-color: #1C76FE;
+    &__potential {
+      border-color: var(--index-blue1-color);
     }
   }
 }

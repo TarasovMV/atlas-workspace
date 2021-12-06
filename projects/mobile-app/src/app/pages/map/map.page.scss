@@ -1,0 +1,93 @@
+@import "src/theme/functions/resizer";
+
+* {
+  box-sizing: border-box;
+}
+
+pinch-zoom {
+  background: transparent !important;
+}
+
+.wrapper {
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-end;
+  height: 100%;
+  background: var(--bg-dashboard-color);
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    color: var(--text-contrast-color);
+
+    app-tabs-switcher {
+      --margin-side: #{sizeWidth(30)};
+      overflow: auto;
+    }
+
+    .title {
+      display: flex;
+      height: 15vh;
+      min-height: 15vh;
+      padding: 0 sizeWidth(30);
+
+      span {
+        font-family: 'SegoeUI_Bold';
+        font-size: sizeHeight(24);
+        margin-top: sizeHeight(65);
+      }
+
+      svg-icon {
+        display: flex;
+        color: var(--text-contrast-color);
+        width: sizeHeight(27);
+        height: sizeHeight(24);
+        margin-top: sizeHeight(67);
+        margin-left: auto;
+      }
+    }
+  }
+
+  .page-wrapper {
+    display: flex;
+    position: relative;
+    width: 100%;
+    flex-grow: 1;
+
+    pinch-zoom {
+      height: 100%;
+
+      svg-icon {
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+}
+
+.chat-button {
+  position: fixed;
+  width: sizeHeight(72);
+  height: sizeHeight(72);
+  background: var(--index-blue1-color);
+  border-radius: 50%;
+  bottom: sizeHeight(50);
+  left: sizeWidth(30);
+  color: white;
+  box-sizing: border-box;
+  padding: sizeHeight(20);
+  box-shadow: 0 0 sizeHeight(15) 0 var(--index-blue1-color);
+
+  svg-icon {
+    width: 100%;
+    height: 100%;
+    margin: sizeHeight(-2) 0 0 sizeHeight(-2);
+  }
+}
+
+ion-spinner {
+  margin: auto;
+  transform: scale(1.5);
+  --color: var(--gray-G4-color);
+}

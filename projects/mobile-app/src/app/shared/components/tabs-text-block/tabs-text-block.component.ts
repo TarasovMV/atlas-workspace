@@ -1,16 +1,14 @@
-import {Attribute, Component, OnInit} from '@angular/core';
-
-export type BlockType = 'default' | 'restrictions' | 'potential' | 'activity';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ITextBlock} from '../../models/text-block.model';
 
 @Component({
     selector: 'app-tabs-text-block',
     templateUrl: './tabs-text-block.component.html',
-    styleUrls: ['./tabs-text-block.component.scss']
+    styleUrls: ['./tabs-text-block.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TabsTextBlockComponent implements OnInit {
+export class TabsTextBlockComponent {
 
-    constructor(@Attribute('type') public type: BlockType) {}
-
-    ngOnInit(): void {
-    }
+    @Input() data: ITextBlock;
+    constructor() {}
 }

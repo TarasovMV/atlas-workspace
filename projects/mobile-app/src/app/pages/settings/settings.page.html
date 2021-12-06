@@ -1,0 +1,19 @@
+<div class="wrapper">
+  <div class="header">
+    <svg-icon (click)="back()" class="arrow" src="assets/icons/arrow.svg"></svg-icon>
+    <span>Настройки</span>
+  </div>
+  <div class="page-wrapper">
+    <div class="item">
+      <span>Тема</span>
+      <app-toggle [isIcon]="true" [formControl]="themeControl"></app-toggle>
+    </div>
+    <div class="item">
+      <span>Пуш уведомления</span>
+      <app-toggle [formControl]="pushControl"></app-toggle>
+    </div>
+    <div (click)="changeUser()" class="item item__button">
+      <span>Сменить пользователя</span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+@import "src/theme/functions/resizer";
+
+* {
+  box-sizing: border-box;
+}
+
+.wrapper {
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-end;
+  height: 100%;
+  background: var(--bg-dashboard-color);
+
+  .header {
+    display: flex;
+    height: 15vh;
+    min-height: 15vh;
+    width: 100%;
+    color: var(--text-contrast-color);
+    padding: 0 sizeWidth(30);
+
+    span {
+      font-family: 'SegoeUI_Bold';
+      font-size: sizeHeight(24);
+      margin-top: sizeHeight(65);
+    }
+
+    svg-icon {
+      display: flex;
+      color: var(--text-contrast-color);
+      width: sizeHeight(20);
+      height: sizeHeight(20);
+      margin: sizeHeight(73) sizeWidth(25) 0 0;
+      transform: rotate(90deg);
+    }
+  }
+
+  .page-wrapper {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    flex-grow: 1;
+    padding: sizeWidth(30) sizeWidth(30) sizeWidth(60) sizeWidth(30);
+  }
+}

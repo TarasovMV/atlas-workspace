@@ -1,0 +1,8 @@
+<div class="switch-btn" (click)="toggle()" [class.switch-on]="value">
+  <div class="moon">
+    <svg-icon *ngIf="isIcon" src="assets/icons/moon.svg"></svg-icon>
+  </div>
+  <div class="sun">
+    <svg-icon *ngIf="isIcon" src="assets/icons/sun.svg"></svg-icon>
+  </div>
+</div>

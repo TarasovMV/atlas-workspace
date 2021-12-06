@@ -1,6 +1,20 @@
 <div class="wrapper">
-  <h1 class="tabs-title tabs-title_default">Идеи</h1>
-  <app-tabs-text-block type="default">Приложение предоставит доступ к карте потенциала ОНПЗ, на которой Вы сможете ознакомиться с показателями определенной установки и перейти к подробнйо информации</app-tabs-text-block>
-  <app-tabs-text-block type="default">Оборудование арматуры и корпусов насосов быстросъемной теплоизоляцией</app-tabs-text-block>
-  <app-tabs-text-block type="default">Приложение позволит Вам самостоятельно получить доступ к информации с мобильного устройства, изучить мероприятия по повышению производительности установок, производственные ограничения и получить доступ к банку идей</app-tabs-text-block>
+  <div class="header">
+    <app-tabs-switcher [formControl]="control">
+      <app-tabs-switcher-option *ngFor="let indic of indicators"
+                                [value]="indic.id"
+      >{{indic.name}}</app-tabs-switcher-option>
+    </app-tabs-switcher>
+  </div>
+  <div class="content">
+    <ng-container *ngIf="isLoad$ | async; else loader">
+      <h1 class="tabs-title tabs-title_default">Идеи</h1>
+      <app-tabs-text-block *ngFor="let card of cards$ | async" [data]="card"></app-tabs-text-block>
+      <div class="empty" *ngIf="isEmpty$ | async">{{emptyText}}</div>
+    </ng-container>
+  </div>
 </div>
+
+<ng-template #loader>
+  <ion-spinner name="dots"></ion-spinner>
+</ng-template>

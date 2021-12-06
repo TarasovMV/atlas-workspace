@@ -8,16 +8,23 @@
   flex-flow: column;
   justify-content: flex-end;
   height: 100%;
-  background: #12151E;
+  background: var(--bg-dashboard-color);
 
   .header {
     display: flex;
     height: 15vh;
     min-height: 15vh;
     width: 100%;
-    background: #12151E;
-    color: #D7E2F2;
+    background: var(--bg-dashboard-color);
+    color: var(--text-contrast-color);
     padding: 0 sizeWidth(30);
+
+    .arrow {
+      transform: rotate(90deg);
+      width: sizeHeight(22);
+      height: sizeHeight(22);
+      margin: sizeHeight(72) sizeWidth(25) 0 0;
+    }
 
     span {
       font-family: 'SegoeUI_Bold';
@@ -35,8 +42,8 @@
   .footer {
     width: 100%;
     display: flex;
-    background: #1C1F2B;
-    box-shadow: 0 0 5vh 0 rgb(0 0 0 / 60%);
+    background: var(--bg-body-color);
+    box-shadow: 0 0 5vh 0 rgb(0 0 0 / 12%);
     z-index: 999;
     padding-top: 1.8vh;
     padding-bottom: 1.8vh;
@@ -49,14 +56,13 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      color: #606580;
+      color: var(--border-icon-color);
       font-size: sizeHeight(24);
       height: 5vh;
       justify-content: center;
 
       .tabs-name {
         width: 100%;
-        //font-family: 'SegoeUI';
         font-size: sizeHeight(10);
         display: flex;
         justify-content: center;
@@ -131,4 +137,10 @@
 
 @keyframes tabs-name {
   @include tabs-name-animation();
+}
+
+ion-spinner {
+  margin: auto;
+  transform: scale(1.5);
+  --color: var(--gray-G4-color);
 }

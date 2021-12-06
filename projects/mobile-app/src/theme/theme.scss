@@ -1,3 +1,5 @@
+@import "variables/light-style";
+@import "variables/dark-style";
 @import "src/theme/functions/resizer";
 
 @font-face {
@@ -38,21 +40,24 @@ body {
 .tabs-title {
   font-size: sizeHeight(24);
   font-weight: 700;
-  color: white;
-
-  &_activity {
-    color: #1C76FE;
-  }
 
   &_restrictions {
     color: #F7931E;
   }
 
   &_potential {
-    color: #00A73D;
+    color: #1C76FE;
   }
 
   &_default {
-    color: #8C99B2;
+    color: var(--text-main-color);
   }
+}
+
+.theme-light {
+  @include style-light();
+}
+
+.theme-dark {
+  @include style-dark();
 }

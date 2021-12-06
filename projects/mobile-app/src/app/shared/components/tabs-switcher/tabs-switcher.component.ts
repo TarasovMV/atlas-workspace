@@ -1,4 +1,11 @@
-import {AfterContentInit, Component, ContentChildren, forwardRef, OnInit, QueryList} from '@angular/core';
+import {
+    AfterContentInit,
+    ChangeDetectionStrategy,
+    Component,
+    ContentChildren,
+    forwardRef, Input,
+    QueryList
+} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 import {TabsSwitcherOptionComponent} from "./tabs-switcher-option/tabs-switcher-option.component";
 
@@ -13,13 +20,17 @@ import {TabsSwitcherOptionComponent} from "./tabs-switcher-option/tabs-switcher-
             multi: true,
         },
     ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 
 })
 export class TabsSwitcherComponent<T = any> implements ControlValueAccessor, AfterContentInit {
-    @ContentChildren(TabsSwitcherOptionComponent)
-    private options!: QueryList<TabsSwitcherOptionComponent>;
+    @Input()
+    public multi: boolean = false;
 
-    private value!: T;
+    @ContentChildren(TabsSwitcherOptionComponent)
+    private options!: QueryList<TabsSwitcherOptionComponent<T>>;
+
+    private value!: T | T[];
     private onChange!: (value: T | T[]) => void;
     private onTouched!: () => void;
 
@@ -29,7 +40,7 @@ export class TabsSwitcherComponent<T = any> implements ControlValueAccessor, Aft
         this.writeValue(this.value);
     }
 
-    public writeValue(value: T): void {
+    public writeValue(value: T | T[]): void {
         this.value = value;
         this.selectedHandler();
     }
@@ -42,11 +53,21 @@ export class TabsSwitcherComponent<T = any> implements ControlValueAccessor, Aft
         this.onTouched = onTouched;
     }
 
-    public onOptionSelect(option: TabsSwitcherOptionComponent, event: Event) {
+    public onOptionSelect(option: TabsSwitcherOptionComponent<T>, event: Event) {
+        if (this.multi) {
+            let result;
+            if ((this.value as T[]).indexOf(option.value) === -1) {
+                result = [...this.value as T[], option.value];
+            } else {
+                result = (this.value as T[]).filter(x => x !== option.value);
+            }
+            this.emitSelection(result);
+            return;
+        }
         this.emitSelection(option.value);
     }
 
-    private emitSelection(value: T) {
+    private emitSelection(value: T | T[]) {
         if (!this.onChange) {
             return;
         }
@@ -58,8 +79,12 @@ export class TabsSwitcherComponent<T = any> implements ControlValueAccessor, Aft
         if (!this.options?.length) {
             return;
         }
-        this.options.forEach(o => o.selected = false);
+        if (this.multi) {
+            this.options.forEach(o => o.selected = !!(this.value as T[]).find(x => x === o.value));
+            return;
+        }
         const option = this.options.find(o => o.value === this.value);
+        this.options.forEach(o => o.selected = false);
         if (!option) {
             return;
         }

@@ -5,7 +5,6 @@ svg {
 }
 
 .container {
-  height: 100%;
   width: 100%;
 
   display: flex;
@@ -38,7 +37,7 @@ svg {
 
         .description {
           font-size: sizeHeight(12);
-          color: #606580;
+          color: var(--chart-axes-color);
 
           text-align: center;
         }
@@ -49,7 +48,7 @@ svg {
           font-size: sizeHeight(12);
           font-weight: 700;
 
-          color: #D7E2F2;
+          color: var(--text-contrast-color);
           text-align: center;
         }
 
@@ -66,19 +65,19 @@ svg {
         width: sizeWidth(1);
         flex: 1;
 
-        background: rgba(96, 101, 128, 0.25);
+        background: var(--chart-segment-color);
       }
     }
 
     ::ng-deep {
       .diagram__circle {
         position: absolute;
-        stroke: #606580;
-        fill: #12151E;
+        stroke: var(--chart-axes-color);
+        fill: var(--gray-G12-color);
       }
 
       .diagram__blue {
-        stroke: #1C76FE;
+        stroke: var(--index-blue1-color);
         stroke-width: sizeHeight(1);
         fill: transparent;
 
@@ -91,20 +90,20 @@ svg {
         fill: transparent;
 
         &_blue {
-          stroke: #1C76FE;
+          stroke: var(--index-blue1-color);
         }
 
         &_white {
-          stroke: #FFFFFF;
+          stroke: var(--text-contrast-color);
         }
 
         &_green {
-          stroke: #00A73D;
+          stroke: var(--index-green1-color);
         }
       }
 
       .dot {
-        fill: #1C76FE;
+        fill: var(--index-blue1-color);
       }
     }
   }

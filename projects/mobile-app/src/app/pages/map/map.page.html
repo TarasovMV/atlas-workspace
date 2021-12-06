@@ -1,0 +1,26 @@
+<div class="wrapper">
+  <div class="header">
+    <div class="title">
+      <span>Карта потенциала</span>
+      <svg-icon (click)="openSettings()" src="assets/icons/burger.svg"></svg-icon>
+    </div>
+    <app-tabs-switcher [multi]="true" [formControl]="control">
+      <app-tabs-switcher-option [mini]="true" [value]="1">Производство 1</app-tabs-switcher-option>
+      <app-tabs-switcher-option [mini]="true" [value]="2">Производство 2</app-tabs-switcher-option>
+      <app-tabs-switcher-option [mini]="true" [value]="3">Производство 3</app-tabs-switcher-option>
+      <app-tabs-switcher-option [mini]="true" [value]="4">Производство 4</app-tabs-switcher-option>
+    </app-tabs-switcher>
+  </div>
+  <div class="page-wrapper">
+    <pinch-zoom *ngIf="isLoaded$ | async; else loader">
+      <svg-icon (click)="chooseUnit(17)" src="assets/images/map.svg"></svg-icon>
+    </pinch-zoom>
+  </div>
+</div>
+<div (click)="openChat()" class="chat-button">
+  <svg-icon src="assets/icons/plane.svg"></svg-icon>
+</div>
+
+<ng-template #loader>
+  <ion-spinner name="dots"></ion-spinner>
+</ng-template>

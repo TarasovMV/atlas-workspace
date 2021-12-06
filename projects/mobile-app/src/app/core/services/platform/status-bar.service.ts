@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {StatusBar, Style} from '@capacitor/status-bar';
 import {debounceTime, filter} from "rxjs/operators";
 import {NavigationEnd, Router} from "@angular/router";
+import {ThemeService} from './theme-service.service';
 
 @Injectable({
     providedIn: 'root'
@@ -9,7 +10,7 @@ import {NavigationEnd, Router} from "@angular/router";
 export class StatusBarService {
     private readonly alternativePages: string[] = [];
 
-    constructor(private router: Router) {}
+    constructor(private router: Router, private theme: ThemeService) {}
 
     public async init(): Promise<void> {
         try {
@@ -17,9 +18,10 @@ export class StatusBarService {
         } catch (e) {
             console.warn('Status bar not supported');
         }
-        this.router.events
-            .pipe(filter(event => event instanceof NavigationEnd), debounceTime(100))
-            .subscribe((x) => this.stateChecker((x as NavigationEnd).url));
+        // this.router.events
+        //     .pipe(filter(event => event instanceof NavigationEnd), debounceTime(100))
+        //     .subscribe((x) => this.stateChecker((x as NavigationEnd).url));
+        this.theme.isDarkTheme$.subscribe(x => !!x ? this.setDefaultColor() : this.setAlternativeColor())
     }
 
     private async setDefaultColor(): Promise<void> {

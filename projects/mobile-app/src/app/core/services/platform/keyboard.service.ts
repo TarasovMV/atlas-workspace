@@ -11,8 +11,7 @@ export class KeyboardService {
     private keyboardHeight$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
     private readonly routesWithCoveredKeyboard = ['/auth'];
 
-    constructor(private router: Router) {
-    }
+    constructor(private router: Router) {}
 
     public async setInitSettings(platform: Platform, appWindow: ElementRef | undefined): Promise<void> {
         if (!appWindow) {

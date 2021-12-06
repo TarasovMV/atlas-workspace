@@ -19,11 +19,12 @@
   }
 
   .content {
+    height: 100%;
+    background: var(--bg-dashboard-color);
     margin-top: sizeHeight(80);
     display: flex;
     flex-flow: column;
     padding: 0 sizeWidth(16);
-    background: #12151E;
     z-index: 2;
 
     h1 {
@@ -33,5 +34,17 @@
     app-tabs-text-block {
       margin-bottom: sizeHeight(8);
     }
+
+    .empty {
+      color: var(--data-c11-color);
+      margin-left: sizeWidth(14);
+      font-size: sizeHeight(16);
+    }
   }
+}
+
+ion-spinner {
+  margin: auto;
+  transform: scale(1.5);
+  --color: var(--gray-G4-color);
 }

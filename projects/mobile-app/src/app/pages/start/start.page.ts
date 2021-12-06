@@ -84,8 +84,8 @@ export class StartPage {
     }
 
     public async start(): Promise<void> {
-        // await this.tokenService.setSystemToken();
-        await this.navCtrl.navigateRoot('auth');
+        await this.tokenService.setSystemToken();
+        await this.navCtrl.navigateRoot('map');
     }
 
 }

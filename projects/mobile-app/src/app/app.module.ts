@@ -1,11 +1,15 @@
-import {APP_INITIALIZER, NgModule} from '@angular/core';
+import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {AppComponent} from './app.component';
 import {IonicModule} from '@ionic/angular';
-import {RouterModule} from "@angular/router";
 import {AngularSvgIconModule} from "angular-svg-icon";
 import {HttpClientModule} from "@angular/common/http";
-import {appConfigInit, AppConfigService} from './core/services/platform/app-config.service';
+import {AppRoutingModule} from './app-routing.module';
+import APP_PROVIDERS from './app.providers';
+import {StoreModule} from '@ngrx/store';
+import {reducers} from './core/store/store.reducers';
+import {EffectsModule} from '@ngrx/effects';
+import {StoreEffects} from './core/store/store.effects';
 
 @NgModule({
     declarations: [
@@ -13,33 +17,16 @@ import {appConfigInit, AppConfigService} from './core/services/platform/app-conf
     ],
     imports: [
         BrowserModule,
+        AppRoutingModule,
+        IonicModule.forRoot(),
         AngularSvgIconModule.forRoot(),
         HttpClientModule,
-        IonicModule.forRoot(),
-        RouterModule.forRoot([
-            {
-                path: '',
-                redirectTo: 'start',
-                pathMatch: 'full',
-            },
-            {
-                path: 'tabs',
-                loadChildren: () => import('./pages/tabs/tabs.module').then(m => m.TabsPageModule),
-            },
-            {
-                path: 'auth',
-                loadChildren: () => import('./pages/auth/auth.module').then(m => m.AuthPageModule),
-            },
-            {
-                path: 'start',
-                loadChildren: () => import('./pages/start/start.module').then(m => m.StartPageModule),
-            },
-        ]),
+        StoreModule.forRoot(reducers),
+        EffectsModule.forRoot([StoreEffects])
     ],
-    providers: [
-        { provide: APP_INITIALIZER, useFactory: appConfigInit, deps: [AppConfigService], multi: true },
-    ],
+    providers: [APP_PROVIDERS],
     bootstrap: [AppComponent]
 })
+
 export class AppModule {
 }

@@ -3,13 +3,14 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import { Storage } from '@capacitor/storage';
 import {Platform} from "@ionic/angular";
 
+
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class ThemeService {
     private readonly renderer: Renderer2;
     private themeConfigurator: ThemeConfigurator;
-    public isDarkTheme: Observable<boolean>;
+    public isDarkTheme$: Observable<boolean>;
 
     constructor(
         private rendererFactory: RendererFactory2,
@@ -18,13 +19,9 @@ export class ThemeService {
     }
 
     public async setThemeConfiguratorRoot(document: Document): Promise<void> {
-        const theme = await Storage.get({key: 'theme'});
-        this.themeConfigurator = new ThemeConfigurator(document, this.renderer, theme.value);
-        this.isDarkTheme = this.themeConfigurator.isDarkThemeObservable;
-    }
-
-    public changeTheme(): void {
-        this.themeConfigurator.switchTheme();
+        const theme = (await Storage.get({key: 'theme'}))?.value;
+        this.themeConfigurator = new ThemeConfigurator(document, this.renderer, theme);
+        this.isDarkTheme$ = this.themeConfigurator.isDarkTheme$;
     }
 
     public setPlatformClass(document: Document, platform: Platform): void {
@@ -32,18 +29,21 @@ export class ThemeService {
             this.renderer.setAttribute(document.body, 'class', 'ios');
         }
     }
+
+    public changeTheme(): void {
+        this.themeConfigurator.switchTheme();
+    }
 }
 
 export class ThemeConfigurator {
-    private isDarkTheme$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-    public isDarkThemeObservable: Observable<boolean> = this.isDarkTheme$.asObservable();
+    public isDarkTheme$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
     constructor(
         private document: Document,
         private renderer: Renderer2,
         themeStorage: string,
     ) {
-        this.isDarkThemeObservable.subscribe((ref) => this.setTheme(ref));
+        this.isDarkTheme$.subscribe((ref) => this.setTheme(ref));
         if (!themeStorage) {
             this.theme = true;
         } else {
@@ -52,7 +52,7 @@ export class ThemeConfigurator {
     }
 
     public set theme(value: boolean) {
-        // this.storage.set('theme', value.toString()).then();
+        Storage.set({key: 'theme', value: value.toString()}).then();
         this.isDarkTheme$.next(value);
     }
 

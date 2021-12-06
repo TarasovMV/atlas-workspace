@@ -1,3 +1,15 @@
 <div class="wrapper">
-  <app-main-diagram></app-main-diagram>
+  <div class="stats">
+    <img src="assets/images/factory.png"/>
+    <div class="right">
+      <span class="value">{{potential$ | async}}</span>
+      <span class="title">Величина потенциала</span>
+    </div>
+  </div>
+  <div class="legend">
+    <div class="item item__default">ДУ</div>
+    <div class="item item__potential">Потенциал</div>
+    <div class="item item__current">Текущее состояние</div>
+  </div>
+  <app-main-diagram style="margin-top: auto"></app-main-diagram>
 </div>

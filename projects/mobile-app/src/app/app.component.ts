@@ -2,10 +2,10 @@ import {Component, ElementRef, Inject, ViewChild} from '@angular/core';
 import {DOCUMENT} from "@angular/common";
 import {Platform} from "@ionic/angular";
 import {KeyboardService} from "./core/services/platform/keyboard.service";
-import {UserService} from "./core/services/data/user.service";
 import {StatusBarService} from "./core/services/platform/status-bar.service";
 import {BackButtonService} from "./core/services/platform/back-button.service";
 import {SplashScreen} from "@capacitor/splash-screen";
+import {ThemeService} from './core/services/platform/theme-service.service';
 
 @Component({
     selector: 'app-root',
@@ -19,16 +19,19 @@ export class AppComponent {
         @Inject(DOCUMENT) private document: Document,
         private platform: Platform,
         private keyboardService: KeyboardService,
-        private userService: UserService,
         private statusBarService: StatusBarService,
         private backButtonService: BackButtonService,
+        private themeService: ThemeService,
     ) {}
 
     public ngOnInit(): void {
-        this.platform.ready().then(() => {
+        this.platform.ready().then(async () => {
             this.keyboardService.setInitSettings(this.platform, this.appWindow).then();
-            this.statusBarService.init();
+            this.themeService.setPlatformClass(this.document, this.platform);
             this.backButtonService.init(this.platform);
+            await this.themeService.setThemeConfiguratorRoot(this.document);
+            this.statusBarService.init().then();
+
             setTimeout(() => SplashScreen.hide().then(), 300);
         });
     }

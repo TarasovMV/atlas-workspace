@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {IonicModule} from '@ionic/angular';
 import {TabsIdeasPage} from './tabs-ideas.page';
 import {AngularSvgIconModule} from 'angular-svg-icon';
@@ -14,7 +14,8 @@ import {SharedModule} from "../../../../shared/shared.module";
         IonicModule,
         AngularSvgIconModule,
         RouterModule.forChild([{path: '', component: TabsIdeasPage}]),
-        SharedModule
+        SharedModule,
+        ReactiveFormsModule
     ],
     declarations: [
         TabsIdeasPage,
